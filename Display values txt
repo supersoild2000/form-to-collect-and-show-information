@@ -1,0 +1,73 @@
+Me: Now create component to display values. This component display a list (could be table) of values in store
+
+    Let's create a Display component to show the current values in the store. This component will use useSelector to read the values directly from the Redux store.
+
+    Here is an example Display.tsx file:
+
+    tsx
+    import React from 'react';
+    import { useSelector } from 'react-redux';
+    import { RootState } from './store';
+
+    const Display: React.FC = () => {
+    const user = useSelector((state: RootState) => state.user);
+
+    return (
+        <table>
+        <thead>
+            <tr>
+            <th>Field</th>
+            <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>First Name</td>
+            <td>{user.firstName}</td>
+            </tr>
+            <tr>
+            <td>Last Name</td>
+            <td>{user.lastName}</td>
+            </tr>
+            <tr>
+            <td>Email</td>
+            <td>{user.email}</td>
+            </tr>
+            <tr>
+            <td>Message</td>
+            <td>{user.message}</td>
+            </tr>
+        </tbody>
+        </table>
+    );
+    };
+
+    export default Display;
+
+
+    In this component, a table is used to display each field from the user data along with its value. useSelector is used to extract the current state of the user from the Redux store.
+
+    To style the table, you could create a display.css file:
+
+    css
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    }
+
+    table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    }
+
+    th {
+    background-color: #f2f2f2;
+    }
+
+
+    And don't forget to import the CSS in your Display.tsx component:
+
+    tsx
+    import './display.css';

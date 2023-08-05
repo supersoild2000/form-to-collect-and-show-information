@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validator from "validator";
-import { RootState, AppDispatch } from "../store";
-import { updateField } from "../store/slices/userSlice";
+import { RootState, AppDispatch } from "../../store";
+import { updateField } from "../../store/slices/userSlice";
 import "./form.css";
 
 const Form: React.FC = () => {
