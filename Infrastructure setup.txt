@@ -1,89 +1,87 @@
 Me: How to bind SonarCloud.io to created GitHub repository?
 
+    To bind SonarCloud to your GitHub repository, follow these steps:
 
-To bind SonarCloud to your GitHub repository, follow these steps:
+    1. Log in to SonarCloud using your GitHub account.
 
-1. Log in to SonarCloud using your GitHub account.
+    2. Once logged in, click on the '+' icon in the top-right corner of the homepage to add a new project.
 
-2. Once logged in, click on the '+' icon in the top-right corner of the homepage to add a new project.
+    3. You will see an option named 'Analyze new project'. Click on it. 
 
-3. You will see an option named 'Analyze new project'. Click on it. 
+    4. You will see a list of your GitHub repositories. Find the repository you wish to bind to SonarCloud and click 'Set Up' on the right side.
 
-4. You will see a list of your GitHub repositories. Find the repository you wish to bind to SonarCloud and click 'Set Up' on the right side.
+    5. Follow the on-screen instructions to complete the setup. This usually includes setting up the SonarCloud GitHub App in your repository, which may require admin permissions.
 
-5. Follow the on-screen instructions to complete the setup. This usually includes setting up the SonarCloud GitHub App in your repository, which may require admin permissions.
+    6. You may be asked to define your 'New Code', which is how SonarCloud determines what is considered new and old code in your repository. You can customize this according to your project's needs.
 
-6. You may be asked to define your 'New Code', which is how SonarCloud determines what is considered new and old code in your repository. You can customize this according to your project's needs.
+    7. Finally, you will be presented with a "sonar-project.properties" configuration file to add to your repository, which will tell SonarCloud how to analyze your code. This might include the project key, the project name, and the paths to source code.
 
-7. Finally, you will be presented with a "sonar-project.properties" configuration file to add to your repository, which will tell SonarCloud how to analyze your code. This might include the project key, the project name, and the paths to source code.
+    8. You can now integrate SonarCloud within your CI/CD pipeline to analyze your project whenever you push your code to GitHub.
 
-8. You can now integrate SonarCloud within your CI/CD pipeline to analyze your project whenever you push your code to GitHub.
-
-Remember, the steps may vary slightly depending on the exact UI/UX of the platform as it's updated from time to time.
+    Remember, the steps may vary slightly depending on the exact UI/UX of the platform as it's updated from time to time.
 
 
 Me: Using yarn create a react project (cra) in the same folder and install the latest version of redux and validator libraries
 
+    Sure, here's how you can do that. Make sure you've installed Node.js and Yarn on your machine. If not, you need to install them first.
 
-Sure, here's how you can do that. Make sure you've installed Node.js and Yarn on your machine. If not, you need to install them first.
+    1. Open your terminal or command prompt.
 
-1. Open your terminal or command prompt.
+    2. Navigate to the directory where you want to create your project using the cd command.
 
-2. Navigate to the directory where you want to create your project using the cd command.
-
-3. Then run the following command to create a new React project:
-   
-
-    yarn create react-app my-app
-    
-   Replace my-app with your desired project name.
-
-4. After the command finishes executing, move into your new project's directory using:
-   
-
-    cd my-app
+    3. Then run the following command to create a new React project:
     
 
-5. Now, you can install the latest versions of Redux and Validator using the following commands:
-   
+        yarn create react-app my-app
+        
+    Replace my-app with your desired project name.
 
-    yarn add redux
-    yarn add validator
+    4. After the command finishes executing, move into your new project's directory using:
     
 
-You have now created a new React project and installed the latest versions of Redux and Validator in it.
+        cd my-app
+        
 
-
-Me: Also with typescript support
-
-
-
-If you'd like to create a new React project with TypeScript, you can do it this way:
-
-1. Open your terminal or command prompt.
-
-2. Navigate to the directory where you want to create your project using the cd command.
-
-3. Then run the following command to create a new React project with TypeScript support:
-   
-
-    yarn create react-app my-app --template typescript
-    
-   Replace my-app with your desired project name.
-
-4. After the command finishes executing, move into your new project's directory using:
-   
-
-    cd my-app
+    5. Now, you can install the latest versions of Redux and Validator using the following commands:
     
 
-5. Now, you can install the latest versions of Redux, Redux Toolkit (recommended for use with Redux), Redux types for TypeScript, Validator, and Validator types for TypeScript using the following commands:
-   
+        yarn add redux
+        yarn add validator
+        
 
-    yarn add @reduxjs/toolkit
-    yarn add @types/redux
-    yarn add validator
-    yarn add @types/validator -D
+    You have now created a new React project and installed the latest versions of Redux and Validator in it.
+
+
+    Me: Also with typescript support
+
+
+
+    If you'd like to create a new React project with TypeScript, you can do it this way:
+
+    1. Open your terminal or command prompt.
+
+    2. Navigate to the directory where you want to create your project using the cd command.
+
+    3. Then run the following command to create a new React project with TypeScript support:
     
 
-Now you have a React project set up with TypeScript, along with Redux and Validator installed.
+        yarn create react-app my-app --template typescript
+        
+    Replace my-app with your desired project name.
+
+    4. After the command finishes executing, move into your new project's directory using:
+    
+
+        cd my-app
+        
+
+    5. Now, you can install the latest versions of Redux, Redux Toolkit (recommended for use with Redux), Redux types for TypeScript, Validator, and Validator types for TypeScript using the following commands:
+    
+
+        yarn add @reduxjs/toolkit
+        yarn add @types/redux
+        yarn add validator
+        yarn add @types/validator -D
+        
+
+    Now you have a React project set up with TypeScript, along with Redux and Validator installed.

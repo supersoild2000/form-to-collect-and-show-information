@@ -1,0 +1,159 @@
+Me: Install redux/react-redux and create a store for the react application to store first name, last name, email and message using Typescript
+
+    First, to use Redux with a React application, you need to install the redux and react-redux packages. You can do this by running the following commands:
+
+    bash
+    yarn add redux react-redux @types/react-redux
+
+
+    Now, let's create a simple Redux store that will hold an object with firstName, lastName, email, and message properties.
+
+    First, let's define the type for our state. Create a new file src/types.ts:
+
+    ts
+    export interface RootState {
+    firstName: string;
+    lastName: string;
+    email: string;
+    message: string;
+    }
+
+
+    Now, create the Redux store. Create a new file src/store.ts:
+
+    ts
+    import { createStore } from 'redux';
+    import { RootState } from './types';
+
+    // Initial state
+    const initialState: RootState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+    };
+
+    // Reducer
+    function reducer(state = initialState, action: { type: string; payload: any }) {
+    switch (action.type) {
+        case 'UPDATE_FIELD':
+        return {
+            ...state,
+            [action.payload.field]: action.payload.value,
+        };
+        default:
+        return state;
+    }
+    }
+
+    // Store
+    export const store = createStore(reducer);
+
+
+    This store is created with a reducer that handles an action of type 'UPDATE_FIELD', which updates the specified field with the given value.
+
+    Finally, wrap your root React component with the Provider from react-redux and pass your store to it. In your src/index.tsx:
+
+    tsx
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Provider } from 'react-redux';
+    import App from './App';
+    import { store } from './store';
+
+    ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+    );
+
+
+    Now, you can dispatch 'UPDATE_FIELD' actions from your components to update the firstName, lastName, email, and message in your Redux store, and use the useSelector hook from react-redux to read these values from the store.
+
+
+Me: Update this example by using @reduxjs/toolkit (configureStore)
+
+    Sure, let's modify the example to use @reduxjs/toolkit.
+
+    First, install the necessary packages, if not already done:
+
+    bash
+    yarn add @reduxjs/toolkit
+
+
+    Here's how you can set up the store using configureStore and createSlice from Redux Toolkit:
+
+    Create a new file src/userSlice.ts:
+
+    ts
+    import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+    interface UserState {
+    firstName: string;
+    lastName: string;
+    email: string;
+    message: string;
+    }
+
+    const initialState: UserState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+    };
+
+    export const userSlice = createSlice({
+    name: 'user',
+    initialState,
+    reducers: {
+        updateField: (state, action: PayloadAction<{ field: keyof UserState; value: string }>) => {
+        state[action.payload.field] = action.payload.value;
+        },
+    },
+    });
+
+    export const { updateField } = userSlice.actions;
+
+    export default userSlice.reducer;
+
+
+    Then, in your src/store.ts:
+
+    ts
+    import { configureStore } from '@reduxjs/toolkit';
+    import userReducer from './userSlice';
+
+    export const store = configureStore({
+    reducer: {
+        user: userReducer,
+    },
+    });
+
+    export type RootState = ReturnType<typeof store.getState>;
+
+    export type AppDispatch = typeof store.dispatch;
+
+
+    Now, the store is created with configureStore from Redux Toolkit, and the reducer is created with createSlice, which automatically generates action creators and action types that correspond to the reducers and state.
+
+    Finally, in your src/index.tsx:
+
+    tsx
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Provider } from 'react-redux';
+    import App from './App';
+    import { store } from './store';
+
+    ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+    );
+
+
+    You can use useDispatch to dispatch the updateField action, and useSelector to access the state.
+
+    Note: Depending on your project setup, the paths to the imported modules might need to be adjusted.
