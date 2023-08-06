@@ -7,7 +7,7 @@ interface UserState {
   message: string;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   firstName: "",
   lastName: "",
   email: "",

@@ -17,19 +17,19 @@ const StoreViewTable: React.FC = () => {
       <tbody>
         <tr>
           <td>First Name</td>
-          <td>{user.firstName}</td>
+          <td data-testid="first-name">{user.firstName}</td>
         </tr>
         <tr>
           <td>Last Name</td>
-          <td>{user.lastName}</td>
+          <td data-testid="last-name">{user.lastName}</td>
         </tr>
         <tr>
           <td>Email</td>
-          <td>{user.email}</td>
+          <td data-testid="email">{user.email}</td>
         </tr>
         <tr>
           <td>Message</td>
-          <td>{user.message}</td>
+          <td data-testid="message">{user.message}</td>
         </tr>
       </tbody>
     </table>
